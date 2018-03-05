@@ -4,5 +4,6 @@ from .import views
 app_name = 'blog'
 
 urlpatterns = [
-        path('', views.index, name='index'), # /blog/index
+    path('', views.index, name='index'), # /blog/
+    path('add/', views.add, name='add'), # /blog/add
 ]
