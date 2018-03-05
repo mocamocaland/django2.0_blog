@@ -1,8 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
+from django.views import generic
 from .forms import DayCreateForm
 from .models import Day
 
 
+class IndexView(generic.ListView):
+    model = Day
+
+
+class AddView(generic.CreateView):
+    model = Day
+    form_class = DayCreateForm # fields = '__all__'でもかける
+    success_url = reverse_lazy('blog:index') # /blog/
+
+
+'''
 def index(request):
     context = {
         'day_list': Day.objects.all(),
@@ -24,7 +37,7 @@ def add(request):
         'form': form
     }
     return render(request, 'blog/day_form.html', context)
-
+'''
 
 def update(request, pk):
     # urlのpkを基にDayを取得
