@@ -6,4 +6,7 @@ app_name = 'blog'
 urlpatterns = [
     path('', views.index, name='index'), # /blog/
     path('add/', views.add, name='add'), # /blog/add
+    path('update/<int:pk>/', views.update, name='update'), #/blog/update/1 <int:pk>整数ならなんでも受け取る
+    path('delete/<int:pk>/', views.delete, name='delete'), #/blog/delete/1
+    path('detail/<int:pk>/', views.detail, name='detail'), #/blog/detail/1/
 ]

@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <table class="table">
+        <tr>
+            <th>タイトル</th>
+            <th>{{ day.title }}</th>
+        </tr>
+        <tr>
+            <th>本文</th>
+            <th>{{ day.text | linebreaksbr}}</th>
+        </tr>
+        <tr>
+            <th>日付</th>
+            <th>{{ day.date }}</th>
+        </tr>
+    </table>
+</form>
+{% endblock %}

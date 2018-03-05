@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+    <table class="table">
+        <tr>
+            <th>タイトル</th>
+            <th>{{ day.title }}</th>
+        </tr>
+        <tr>
+            <th>本文</th>
+            <th>{{ day.text }}</th>
+        </tr>
+        <tr>
+            <th>日付</th>
+            <th>{{ day.date }}</th>
+        </tr>
+    </table>
+    <p>こちらのデータを削除します。</p>
+    <button type="submit" class="btn btn-primary">送信</button>
+{% csrf_token %}
+</form>
+{% endblock %}
