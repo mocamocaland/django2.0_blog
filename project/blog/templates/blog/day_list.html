@@ -2,4 +2,8 @@
 
 {% block content %}
 <h1>日記アプリケーションです。</h1>
+
+{% for day in day_list %}
+<h2>{{ day.title }}</h2>
+{% endfor %}
 {% endblock %}
