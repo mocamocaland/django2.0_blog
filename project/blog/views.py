@@ -15,6 +15,20 @@ class AddView(generic.CreateView):
     success_url = reverse_lazy('blog:index') # /blog/
 
 
+class UpdateView(generic.UpdateView):
+    model = Day
+    form_class = DayCreateForm
+    success_url = reverse_lazy('blog:index')
+
+class DeleteView(generic.DeleteView):
+    model = Day
+    success_url = reverse_lazy('blog:index')
+
+
+class DetailView(generic.DetailView):
+    model = Day
+
+ 
 '''
 def index(request):
     context = {
@@ -37,7 +51,7 @@ def add(request):
         'form': form
     }
     return render(request, 'blog/day_form.html', context)
-'''
+
 
 def update(request, pk):
     # urlのpkを基にDayを取得
@@ -72,6 +86,7 @@ def delete(request, pk):
     }
     return render(request, 'blog/day_confirm_delete.html', context)
 
+
 def detail(request, pk):
     # urlのpkを基にDayを取得
     day = get_object_or_404(Day, pk=pk)
@@ -81,3 +96,4 @@ def detail(request, pk):
         'day': day,
     }
     return render(request, 'blog/day_detail.html', context)
+'''
