@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
@@ -10,18 +11,18 @@ class IndexView(generic.ListView):
     paginate_by = 3 # 3件ずつ
 
 
-class AddView(generic.CreateView):
+class AddView(LoginRequiredMixin, generic.CreateView):
     model = Day
     form_class = DayCreateForm # fields = '__all__'でもかける
     success_url = reverse_lazy('blog:index') # /blog/
 
 
-class UpdateView(generic.UpdateView):
+class UpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Day
     form_class = DayCreateForm
     success_url = reverse_lazy('blog:index')
 
-class DeleteView(generic.DeleteView):
+class DeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Day
     success_url = reverse_lazy('blog:index')
 
